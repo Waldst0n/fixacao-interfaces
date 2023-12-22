@@ -1,11 +1,11 @@
-package models.application;
+package application;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Scanner;
 
-import models.entities.Contract;
+import entities.Contract;
 
 public class Program {
 
@@ -17,13 +17,16 @@ public class Program {
 		
 		System.out.println("Entre com os dados do contrato:");
 		System.out.print("Número: ");
-		int contractNumber = scanner.nextInt();
+		int number = scanner.nextInt();
 		System.out.print("Data: ");
 		LocalDate date = LocalDate.parse(scanner.next(), dtf);
 		System.out.print("Valor do contrato: ");
-		double contractValue = scanner.nextDouble();
+		double totalValue = scanner.nextDouble();
 		
-		Contract contract = new Contract(contractNumber, date, contractValue);
+		Contract contract = new Contract(number , date , totalValue );
+		
+		System.out.print("Digite o número de parcelas: ");
+		int installmentsnumber = scanner.nextInt();
 		
 		scanner.close();
 				
