@@ -1,10 +1,13 @@
 package entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Installment {
 
-	private LocalDateTime date;
+	private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+	private LocalDate date;
 	private Double amount;
 	
 	
@@ -13,18 +16,18 @@ public class Installment {
 	}
 
 
-	public Installment(LocalDateTime date, Double amount) {
+	public Installment(LocalDate date, Double amount) {
 		this.date = date;
 		this.amount = amount;
 	}
 
 
-	public LocalDateTime getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
@@ -38,7 +41,11 @@ public class Installment {
 		this.amount = amount;
 	}
 	
-	
+	@Override
+	public String toString() {
+		
+		return date.format(dtf) + " - " + String.format("%.2f", amount);
+	}
 	
 	
 }
