@@ -8,6 +8,7 @@ import java.util.Scanner;
 import entities.Contract;
 import entities.Installment;
 import services.ContractService;
+import services.PaypalService;
 
 public class Program {
 
@@ -20,7 +21,7 @@ public class Program {
 		System.out.println("Entre com os dados do contrato:");
 		System.out.print("Número: ");
 		int number = scanner.nextInt();
-		System.out.print("Data: ");
+		System.out.print("Data (dd/MM/yyyy): ");
 		LocalDate date = LocalDate.parse(scanner.next(), dtf);
 		System.out.print("Valor do contrato: ");
 		double totalValue = scanner.nextDouble();
@@ -30,7 +31,7 @@ public class Program {
 		System.out.print("Digite o número de parcelas: ");
 		int installmentsnumber = scanner.nextInt();
 		
-		ContractService contractService = new ContractService(null);
+		ContractService contractService = new ContractService(new PaypalService());
 		
 		contractService.processContract(contract, installmentsnumber);
 		
